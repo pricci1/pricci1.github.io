@@ -6,6 +6,8 @@
 <title>OOP C#</title>
 <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
 </head>
 <body><div class="container"><h1 id="object-oriented-programming-in-c">Object Oriented Programming in C#</h1>
 
@@ -22,19 +24,352 @@
 </li>
 </ul>
 </li>
-<li><a href="#nothing-yet">Nothing yet</a></li>
+<li><a href="#relación-a-nivel-de-clases">Relación a nivel de clases</a><ul>
+<li><a href="#clases-abstractas">Clases abstractas</a></li>
+<li><a href="#polimorfismo">Polimorfismo</a></li>
+<li><a href="#interfaz">Interfaz</a></li>
+<li><a href="#dependencias-cíclicas">Dependencias cíclicas</a></li>
+<li><a href="#namespace">Namespace</a></li>
+</ul>
+</li>
+<li><a href="#tipos-por-valor">Tipos por valor</a><ul>
+<li><a href="#tipos-básicos">Tipos básicos</a></li>
+<li><a href="#structs-estructuras">Structs (Estructuras)</a></li>
+<li><a href="#enumeraciones-enums">Enumeraciones (enums)</a></li>
+</ul>
+</li>
+<li><a href="#valores-por-referencia">Valores por referencia</a><ul>
+<li><a href="#arreglos">Arreglos</a></li>
+<li><a href="#string">String</a></li>
+</ul>
+</li>
+<li><a href="#casting">Casting</a><ul>
+<li><a href="#conversión-básica">Conversión básica</a></li>
+<li><a href="#comando-as">Comando as</a></li>
+<li><a href="#clase-convert">Clase Convert</a></li>
+<li><a href="#properties">Properties</a></li>
+</ul>
+</li>
+<li><a href="#loops">Loops</a><ul>
+<li><ul>
+<li><a href="#for">For:</a></li>
+<li><a href="#foreach">Foreach:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#other-access-modifiers">Other Access-Modifiers</a><ul>
+<li><ul>
+<li><a href="#static">Static:</a></li>
+<li><a href="#const">Const:</a></li>
+<li><a href="#readonly">Readonly</a></li>
+</ul>
+</li>
+<li><a href="#clases-parciales">Clases parciales</a></li>
+</ul>
+</li>
+<li><a href="#io">I/O</a><ul>
+<li><a href="#console">Console</a></li>
+<li><a href="#archivos">Archivos</a><ul>
+<li><a href="#file-stream">File Stream</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#otros">Otros</a><ul>
+<li><a href="#overloading">Overloading</a><ul>
+<li><ul>
+<li><a href="#this">this()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#object-initializer">Object Initializer</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </p>
 
 
 
-<h1 id="nothing-yet">Nothing yet</h1>
+<h1 id="relación-a-nivel-de-clases">Relación a nivel de clases</h1>
+
+
+
+<h2 id="clases-abstractas">Clases abstractas</h2>
+
+<ul>
+<li><p>No pueden ser instanciadas</p>
+
+<p>abstract class <em>name-of-class</em> <br>
+{ <br>
+//Definition <br>
+}</p></li>
+</ul>
+
+
+
+<h2 id="polimorfismo">Polimorfismo</h2>
+
+<p>Duck Typing</p>
+
+
+
+<h2 id="interfaz">Interfaz</h2>
+
+<p>Si una clase implementa varias interfaces, el objeto puede tomar todas las formas que estas interfaces implementan</p>
+
+
+
+<h2 id="dependencias-cíclicas">Dependencias cíclicas</h2>
+
+
+
+<h2 id="namespace">Namespace</h2>
+
+
+
+<h1 id="tipos-por-valor">Tipos por valor</h1>
+
+
+
+<h2 id="tipos-básicos">Tipos básicos</h2>
+
+<p><strong>short</strong>  = -32768 a 32767 <br>
+<strong>int</strong> = -2147483648 a 2147483647 <br>
+<strong>long</strong>, <strong>byte</strong>, <strong>ushort</strong>, <strong>uint</strong>, …</p>
+
+
+
+<h2 id="structs-estructuras">Structs (Estructuras)</h2>
+
+<p>Son tipos de valor. No pueden heredar de otras clases o estructuras, pero si implementar interfaces <br>
+No pueden definir un constructor sin parámetros</p>
+
+<pre><code>access-modifier struct nombre{...}
+</code></pre>
+
+
+
+<h2 id="enumeraciones-enums">Enumeraciones (enums)</h2>
+
+<p>Entrega nombres a valores</p>
+
+<pre><code>enum Colors { Red , Blue , Yellow }
+enum Animals { Elephant = 5, Dog = 27 , Cat = 2 }
+Colors c = Colors . Red ;
+</code></pre>
+
+
+
+<h1 id="valores-por-referencia">Valores por referencia</h1>
+
+<p>Las variables referencian espacios de la memoria</p>
+
+
+
+<h2 id="arreglos">Arreglos</h2>
+
+<p><strong>Jagged arrays</strong>: Matriz asimetrica</p>
+
+
+
+<h2 id="string">String</h2>
+
+
+
+<h1 id="casting">Casting</h1>
+
+
+
+<h2 id="conversión-básica">Conversión básica</h2>
+
+<pre><code>type1 varName1;
+type2 varName2 = (type2)varName1;
+</code></pre>
+
+
+
+<h2 id="comando-as">Comando as</h2>
+
+<pre><code>expression as type;
+</code></pre>
+
+<p>Si la conversion no es posible, retorna null.</p>
+
+
+
+<h2 id="clase-convert">Clase <em>Convert</em></h2>
+
+<p>Parte del namespace <em>System</em> <br>
+Algunos son:</p>
+
+<ul>
+<li>ToBoolean(Type)</li>
+</ul>
+
+
+
+<h2 id="properties">Properties</h2>
+
+<p>Getter and Setter</p>
+
+<pre><code>private string name;
+public string Name
+{
+    get {return name;  }
+    set {name = value; }
+}
+</code></pre>
+
+<p>Útil si queremos que solo sea read-only o write-only</p>
+
+<blockquote>
+  <p>Ej: si queremos que el set de edad no pueda ser menor a la previa</p>
+</blockquote>
+
+
+
+<h1 id="loops">Loops</h1>
+
+
+
+<h3 id="for">For:</h3>
+
+
+
+<h3 id="foreach">Foreach:</h3>
+
+<pre><code>foreach(int num in arr)
+    Console.WriteLine...
+</code></pre>
+
+
+
+<h1 id="other-access-modifiers">Other Access-Modifiers</h1>
+
+
+
+<h3 id="static">Static:</h3>
+
+<pre><code>//Atributo:
+access-modifier stat
+</code></pre>
+
+<p>Util para tener un contador en la clase y, por ejemplo, asignar id’s únicos a cada instancia.</p>
+
+
+
+<h3 id="const">Const:</h3>
+
+<p>Constantes, variables que nunca cambian <br>
+Ej: Pi</p>
+
+<pre><code>// Atributo constate:
+access-modifier const type name = varValue;
+</code></pre>
+
+
+
+<h3 id="readonly">Readonly</h3>
+
+<p>Solo lectura <br>
+Se asigna a nivel de ejecución</p>
+
+
+
+<h2 id="clases-parciales">Clases parciales</h2>
+
+<p>Una clase,estructura o interfaz en las de un archivo. <br>
+Todos los archivos tienen que estar en el mismo <em>assambly</em></p>
+
+<pre><code>//Archivo 1
+partial class Foo
+{
+}
+//Archivo 2
+</code></pre>
+
+
+
+<h1 id="io">I/O</h1>
+
+
+
+<h2 id="console">Console</h2>
+
+<p>Se le puede cambiar el color de fondo a la consola y el de la letra, etc</p>
+
+
+
+<h2 id="archivos">Archivos</h2>
+
+<pre><code>System.IO.File
+</code></pre>
+
+<p>Provee metodos (ver doc)</p>
+
+<pre><code>if(File.Exists("dir\\image.jpg"))...
+</code></pre>
+
+
+
+<h3 id="file-stream">File Stream</h3>
+
+<pre><code>FileStream f = new FileStream("file.txt", FileMode.Open)
+</code></pre>
+
+<p>Al final hay que llamar a Close para cerrar el archivo <br>
+<em>StreamReader</em> e <em>StreamWriter</em></p>
+
+
+
+<h1 id="otros">Otros</h1>
+
+
+
+<h2 id="overloading">Overloading</h2>
+
+<p>El tener varios constructores, por ejemplo, si sabemos que variables pasarle al constructor o no sabemos:</p>
+
+<pre><code>public class Costumer
+{
+public Costumer(){…} //Si no pasamos variables se usa este
+public Costumer(int id, string name){…} // 2 var, se usa este
+public Costumer(string name): this(){…} //Si se le pasa solo una var se usa este
+}
+</code></pre>
+
+
+
+<h4 id="this">this()</h4>
+
+<p>“Hereda” o llama al constructor Costumer()</p>
+
+
+
+<h2 id="object-initializer">Object Initializer</h2>
+
+<p>Inicializar un objeto sin tener que llamar al constructor:</p>
+
+<pre><code>var Person = new Person
+{
+    FirstName = "John"
+    LastName = "Wick"
+}
+</code></pre>
 
 <p>Test MathJax: <br>
-<script type="math/tex; mode=display" id="MathJax-Element-11">
+<script type="math/tex; mode=display" id="MathJax-Element-1">
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 </script></p>
+
+<p>graph TD; <br>
+    A–&gt;B; <br>
+    A–&gt;C; <br>
+    B–&gt;D; <br>
+    C–&gt;D;</p>
 
 <blockquote>
   <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
