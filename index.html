@@ -348,6 +348,78 @@ public Costumer(string name): this(){…} //Si se le pasa solo una var se usa es
 
 
 
+<h3 id="overloading-methods">Overloading methods</h3>
+
+<pre><code>public class Point
+{
+    public void Move(int x, int y) {…}
+    public void Move(Point newLocation) {…}
+    public void Move(Point newLocation, int speed) {…}
+}
+</code></pre>
+
+
+
+<h2 id="methods-con-de-parametros-variable">Methods con # de parametros variable</h2>
+
+
+
+<h3 id="params-modifier">Params Modifier</h3>
+
+<pre><code>public class Calc
+{
+    public int Add(params int[] numbers) {…} //acepta varios números
+}
+</code></pre>
+
+<blockquote>
+  <p><code>var result = calc1.Add(1,2,3)</code></p>
+</blockquote>
+
+
+
+<h2 id="ref-modifier">Ref Modifier</h2>
+
+<p>Si tenemos algo de este estilo:</p>
+
+<pre><code>public class MyClass
+{
+    public void MyMethod(int a)
+    {
+        a += 1
+    }
+}
+</code></pre>
+
+<p>y hacemos los siguiente:</p>
+
+<pre><code>var a = 1;
+myclass1.MyMethod(a);
+Console.WriteLine(a);
+</code></pre>
+
+<p>Nos escribe en la consola: <code>1</code> <br>
+   Esto es porque al método no le estamos pasando <code>a</code> en sí, sino que su valor (que es <code>1</code>). <br>
+   Si en cambio utilizamos el modifier “ref”:</p>
+
+<pre><code>public class MyClass
+{
+    public void MyMethod(ref int a) // acá
+    {
+        a += 1
+    }
+}
+</code></pre>
+
+<p>y hacemos lo siguiente:</p>
+
+<pre><code>var a = 1;
+myclass1.MyMethod(a);
+Console.WriteLine(a);
+</code></pre>
+
+<p>Nos escribe en la consola <strong><code>2</code></strong> , ya que en esta ocasión le estamos pasando a MyMethod la <em>referencia</em> de <code>a</code>, y modificando su valor en el mismo lugar en la memoria.</p>
+
 <h2 id="object-initializer">Object Initializer</h2>
 
 <p>Inicializar un objeto sin tener que llamar al constructor:</p>
@@ -360,15 +432,9 @@ public Costumer(string name): this(){…} //Si se le pasa solo una var se usa es
 </code></pre>
 
 <p>Test MathJax: <br>
-<script type="math/tex; mode=display" id="MathJax-Element-2">
+<script type="math/tex; mode=display" id="MathJax-Element-4">
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 </script></p>
-
-<p>graph TD; <br>
-    A–&gt;B; <br>
-    A–&gt;C; <br>
-    B–&gt;D; <br>
-    C–&gt;D;</p>
 
 <blockquote>
   <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
