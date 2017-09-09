@@ -51,23 +51,25 @@
 </ul>
 </li>
 <li><a href="#loops">Loops</a><ul>
-<li><ul>
-<li><a href="#for">For:</a></li>
-<li><a href="#foreach">Foreach:</a></li>
+<li><a href="#for">For</a></li>
+<li><a href="#foreach">Foreach</a></li>
 </ul>
 </li>
+<li><a href="#access-modifiers">Access-Modifiers</a><ul>
+<li><a href="#public">Public</a></li>
+<li><a href="#private">Private</a></li>
+<li><a href="#protected">Protected</a></li>
+<li><a href="#internal">Internal</a></li>
+<li><a href="#protected-internal">Protected internal</a></li>
 </ul>
 </li>
 <li><a href="#other-access-modifiers">Other Access-Modifiers</a><ul>
-<li><ul>
-<li><a href="#static">Static:</a></li>
-<li><a href="#const">Const:</a></li>
+<li><a href="#static">Static</a></li>
+<li><a href="#const">Const</a></li>
 <li><a href="#readonly">Readonly</a></li>
 </ul>
 </li>
 <li><a href="#clases-parciales">Clases parciales</a></li>
-</ul>
-</li>
 <li><a href="#io">I/O</a><ul>
 <li><a href="#console">Console</a></li>
 <li><a href="#archivos">Archivos</a><ul>
@@ -82,11 +84,19 @@
 <li><a href="#this">this()</a></li>
 </ul>
 </li>
+<li><a href="#overloading-methods">Overloading methods</a></li>
 </ul>
 </li>
+<li><a href="#methods-con-de-parametros-variable">Methods con # de parametros variable</a><ul>
+<li><a href="#params-modifier">Params Modifier</a></li>
+</ul>
+</li>
+<li><a href="#ref-modifier">Ref Modifier</a></li>
 <li><a href="#object-initializer">Object Initializer</a></li>
+<li><a href="#title"> </a></li>
 </ul>
 </li>
+<li><a href="#vs-snippets">VS snippets</a></li>
 </ul>
 </div>
 </p>
@@ -108,6 +118,8 @@
 }
 </code></pre></li>
 </ul>
+
+
 
 <h2 id="polimorfismo">Polimorfismo</h2>
 
@@ -234,11 +246,11 @@ public string Name
 
 
 
-<h3 id="for">For:</h3>
+<h2 id="for">For</h2>
 
 
 
-<h3 id="foreach">Foreach:</h3>
+<h2 id="foreach">Foreach</h2>
 
 <pre><code>foreach(int num in arr)
     Console.WriteLine...
@@ -246,11 +258,53 @@ public string Name
 
 
 
+<h1 id="access-modifiers">Access-Modifiers</h1>
+
+
+
+<h2 id="public">Public</h2>
+
+
+
+<h2 id="private">Private</h2>
+
+<p>Encapsulación: Es buena práctica definir los atribustos como privados y dar acceso a ellos a través de <em>getters</em> and <em>setters</em>.</p>
+
+<p>En realidad no se usa como en el siguiente ejemplo, sino que se usa con <a href="##Properties"><em>properties</em></a> <br>
+Ej:</p>
+
+<pre class="prettyprint"><code class=" hljs cs">
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> _name; <span class="hljs-comment">//Es convención usar _camelCase</span>
+                      <span class="hljs-comment">//para private members</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetName</span>(<span class="hljs-keyword">string</span> name)
+{
+ <span class="hljs-keyword">if</span>(!String.IsNullOrEmpty(name))
+  <span class="hljs-keyword">this</span>._name = name;
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">GetName</span>()
+{
+ <span class="hljs-keyword">return</span> _name;
+}</code></pre>
+
+
+
+<h2 id="protected">Protected</h2>
+
+
+
+<h2 id="internal">Internal</h2>
+
+
+
+<h2 id="protected-internal">Protected internal</h2>
+
+
+
 <h1 id="other-access-modifiers">Other Access-Modifiers</h1>
 
 
 
-<h3 id="static">Static:</h3>
+<h2 id="static">Static</h2>
 
 <pre><code>//Atributo:
 access-modifier stat
@@ -260,7 +314,7 @@ access-modifier stat
 
 
 
-<h3 id="const">Const:</h3>
+<h2 id="const">Const</h2>
 
 <p>Constantes, variables que nunca cambian <br>
 Ej: Pi</p>
@@ -271,14 +325,20 @@ access-modifier const type name = varValue;
 
 
 
-<h3 id="readonly">Readonly</h3>
+<h2 id="readonly">Readonly</h2>
 
-<p>Solo lectura <br>
-Se asigna a nivel de ejecución</p>
+<p>Solo lectura. <br>
+Permite hacer nuestro programa más robusto. <br>
+Se asigna a nivel de ejecución. <br>
+Ejemplo uso:</p>
+
+<blockquote>
+  <p>Con readonly evitamos cometer el error de inicializar, por ejemplo una lista, dos veces dentro de un programa, perdiendo los contenidos que tenía esta lista la segunda vez que la inicializamos.</p>
+</blockquote>
 
 
 
-<h2 id="clases-parciales">Clases parciales</h2>
+<h1 id="clases-parciales">Clases parciales</h1>
 
 <p>Una clase,estructura o interfaz en las de un archivo. <br>
 Todos los archivos tienen que estar en el mismo <em>assambly</em></p>
@@ -420,6 +480,8 @@ Console.WriteLine(a);
 
 <p>Nos escribe en la consola <strong><code>2</code></strong> , ya que en esta ocasión le estamos pasando a MyMethod la <em>referencia</em> de <code>a</code>, y modificando su valor en el mismo lugar en la memoria.</p>
 
+
+
 <h2 id="object-initializer">Object Initializer</h2>
 
 <p>Inicializar un objeto sin tener que llamar al constructor:</p>
@@ -431,8 +493,25 @@ Console.WriteLine(a);
 }
 </code></pre>
 
+
+
+<h2 id="title"> </h2>
+
+<hr>
+
+
+
+<h1 id="vs-snippets">VS snippets</h1>
+
+<ul>
+<li><strong>cw</strong>: Console.WriteLine()</li>
+<li><strong>ctor</strong>: Class constructor</li>
+</ul>
+
+<hr>
+
 <p>Test MathJax: <br>
-<script type="math/tex; mode=display" id="MathJax-Element-4">
+<script type="math/tex; mode=display" id="MathJax-Element-1">
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 </script></p>
 
