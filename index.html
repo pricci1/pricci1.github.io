@@ -47,7 +47,12 @@
 <li><a href="#conversión-básica">Conversión básica</a></li>
 <li><a href="#comando-as">Comando as</a></li>
 <li><a href="#clase-convert">Clase Convert</a></li>
-<li><a href="#properties">Properties</a></li>
+<li><a href="#properties">Properties</a><ul>
+<li><a href="#auto-implemented-properties">Auto-implemented properties</a></li>
+<li><a href="#private-set">private set</a></li>
+<li><a href="#indexer">Indexer</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#loops">Loops</a><ul>
@@ -224,21 +229,62 @@ Algunos son:</p>
 
 <h2 id="properties">Properties</h2>
 
-<p>Getter and Setter</p>
+<p>Getter and Setter, ver <a href="#private"><em>private access-modifier</em></a></p>
 
-<pre><code>private string name;
+<pre><code>private string _name;
 public string Name
 {
-    get {return name;  }
-    set {name = value; }
+    get {return _name;  }
+    set {_name = value; }
 }
 </code></pre>
 
-<p>Útil si queremos que solo sea read-only o write-only</p>
+<p>Útil si queremos que solo sea read-only o write-only (implementando o no get/set)</p>
 
 <blockquote>
   <p>Ej: si queremos que el set de edad no pueda ser menor a la previa</p>
 </blockquote>
+
+
+
+<h3 id="auto-implemented-properties">Auto-implemented properties</h3>
+
+<p>El miembro privado se crea automáticamente. En el ejemplo anterior:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> Person
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+}</code></pre>
+
+<blockquote>
+  <p>Se genera internamente automáticamente la linea: <br>
+   <code>private string _name;</code>, (pero se usa Name, no _name)</p>
+</blockquote>
+
+
+
+<h3 id="private-set">private set</h3>
+
+<p>Podemos anteponer <em>private</em> a <em>set</em> para que el valor de la variable se pueda poner solo en, por ej, el <strong>constructor</strong>:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>; } </code></pre>
+
+
+
+<h3 id="indexer">Indexer</h3>
+
+<p>Es un tipo especial de <em>Property</em> que permite acceder elementos de una lista a través de indices. Si una clase tiene la semántica de un diccionario o lista es útil utitlizarlos.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-keyword">this</span>[<span class="hljs-keyword">string</span> key]
+{
+    <span class="hljs-keyword">get</span>{}; <span class="hljs-keyword">set</span>{};
+}</code></pre>
 
 
 
@@ -270,8 +316,10 @@ public string Name
 
 <p>Encapsulación: Es buena práctica definir los atribustos como privados y dar acceso a ellos a través de <em>getters</em> and <em>setters</em>.</p>
 
-<p>En realidad no se usa como en el siguiente ejemplo, sino que se usa con <a href="##Properties"><em>properties</em></a> <br>
+<p>En realidad no se usa como en el siguiente ejemplo, sino que se usa con <a href="#properties"><em>properties</em></a> <br>
 Ej:</p>
+
+
 
 <pre class="prettyprint"><code class=" hljs cs">
 <span class="hljs-keyword">private</span> <span class="hljs-keyword">string</span> _name; <span class="hljs-comment">//Es convención usar _camelCase</span>
@@ -290,9 +338,13 @@ Ej:</p>
 
 <h2 id="protected">Protected</h2>
 
+<p>Solo accesible por la clase y las clases derivadas</p>
+
 
 
 <h2 id="internal">Internal</h2>
+
+<p>Solo accesible desde el mimo <em>assembly</em></p>
 
 
 
@@ -383,6 +435,26 @@ partial class Foo
 <em>StreamReader</em> e <em>StreamWriter</em></p>
 
 
+
+<h1 id="generics">Generics</h1>
+
+
+
+<h2 id="linked-list-lista-ligada">Linked list / Lista ligada</h2>
+
+<p>Formada por nodos en que apuntan a el nodo que precede y el que lo sigue</p>
+
+
+
+<h2 id="elementtype">ElementType</h2>
+
+<p>En vez de especificar el tipo de objeto (<em>object, string, int</em>, etc…) se puede usar ElementType y &lt;\ElementType&gt;</p>
+
+
+
+<h3 id="restringir-parámetros">Restringir parámetros</h3>
+
+<p><code>class nombreClase&lt;T&gt; where T : nomClase, nomInterfaz, ...</code></p>
 
 <h1 id="otros">Otros</h1>
 
@@ -506,6 +578,7 @@ Console.WriteLine(a);
 <ul>
 <li><strong>cw</strong>: Console.WriteLine()</li>
 <li><strong>ctor</strong>: Class constructor</li>
+<li><strong>prop</strong>: getter and setter</li>
 </ul>
 
 <hr>
